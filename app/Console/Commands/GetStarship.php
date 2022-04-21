@@ -7,6 +7,7 @@ use App\Models\Starship;
 
 use GuzzleHttp\Client;
 use Illuminate\Console\Command;
+use Illuminate\Support\Facades\Artisan;
 
 class GetStarship extends Command
 {
@@ -35,6 +36,9 @@ class GetStarship extends Command
      */
     public function handle()
     {
+
+        Artisan::call('migrate:fresh');
+
         //PRIMERO LLAMO A LA API BASE CON GUZZLE PARA CAPTAR TODOS LOS DATOS
         $client = new Client([
             // Base URI is used with relative requests
@@ -53,10 +57,11 @@ class GetStarship extends Command
             for($i=0; $i< sizeof($data2->results); $i++){
                 $pilot = new Pilot();
 
-                $pilot->name = $data2->results[$i]->name;
-                $pilot->url = $data2->results[$i]->url; //Cuidado, esto va a dar problemas
-                                                                    //Necesidad guardar tambien naves????
+                $pilot->delete();
 
+                $pilot->name = $data2->results[$i]->name;
+                $pilot->url = $data2->results[$i]->url;             //Cuidado, esto va a dar problemas
+                                                                    //Necesidad guardar tambien naves????
                 $pilot->save();
                 }
             }
@@ -69,6 +74,8 @@ class GetStarship extends Command
 
                 for($i=0; $i< sizeof($data->results); $i++){
                     $starship = new Starship();
+
+                    $starship->delete();
 
                     $starship->name = $data->results[$i]->name;
                     $starship->credits = $data->results[$i]->cost_in_credits;  //ESTO ES UN PROBLEMON, COLEGA. Y SE VA A RESOLVER CON VARCHAR, YEAH BOII
