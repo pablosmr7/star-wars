@@ -16,7 +16,7 @@ class CreatePilotsTable extends Migration
         Schema::create('pilots', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
-            $table->string('url');
+            //$table->string('url');
             $table->timestamps();
         });
     }

@@ -23,7 +23,7 @@ Route::get('/', function () {
 
     //CAPTAMOS
     for($x=1; $x<=4; $x++){
-        $response = $client->request('GET', 'starships/?page='.$x.'&format=json'); //starships y people
+        $response = $client->request('GET', 'starships/?page=1&format=json'); //starships y people
 
         $data = json_decode($response->getBody()->getContents());
         

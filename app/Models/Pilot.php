@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Pilot extends Model
 {
 
-    protected $fillable=['name','url'];
+    protected $fillable=['name'];
 
 //------------------------------------------------------------------------------------------------
     //pilotos no asignados
