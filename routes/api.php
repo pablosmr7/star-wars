@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Http\Request;
+use App\Http\Controllers\API\StarshipController;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,5 +19,10 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 //Rutas llamada API
-Route::post('store', 'GuzzlePostController@store')->name('guzz.store');
-Route::get('index', 'GuzzlePostController@index')->name('guzz.index');
+Route::prefix('starship')->group(function () {
+    Route::get('/',[ StarshipController::class, 'getAll']);
+    Route::post('/',[ StarshipController::class, 'create']);
+    Route::delete('/{id}',[ StarshipController::class, 'delete']);
+    Route::get('/{id}',[ StarshipController::class, 'get']);
+    Route::put('/{id}',[ StarshipController::class, 'update']);
+});
