@@ -5,6 +5,8 @@ namespace App\Http\Controllers\API;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 Use App\Models\Starship;
+Use App\Models\PilotStarship;
+Use App\Models\Pilot;
 Use Log;
 
 class StarshipController extends Controller
@@ -13,8 +15,20 @@ class StarshipController extends Controller
 
     public function getAll(){
       $data = Starship::get();
+      $data2 = Pilot::get();
       return response()->json($data, 200);
     }
+
+    public function getPilotShip(){
+      $data = PilotStarship::get();
+      return response()->json($data, 200);
+    }
+
+    public function getPilot(){
+      $data = Pilot::get();
+      return response()->json($data, 200);
+    }
+
 
 
     public function create(Request $request){

@@ -103,7 +103,12 @@ class GetStarship extends Command
                     $starship->delete();
 
                     $starship->name = $data->results[$i]->name;
-                    $starship->credits = $data->results[$i]->cost_in_credits;//ESTO ES UN PROBLEMON, COLEGA. Y SE VA A RESOLVER CON VARCHAR, YEAH BOII
+
+                    if($data->results[$i]->cost_in_credits == 'unknown'){
+                        $starship->credits = NULL;//ESTO ES UN PROBLEMON, COLEGA. Y SE VA A RESOLVER CON VARCHAR, YEAH BOII
+                    }else{
+                        $starship->credits = $data->results[$i]->cost_in_credits;
+                    }
                     $starship->pilot =  $data->results[$i]->url;
 
 
