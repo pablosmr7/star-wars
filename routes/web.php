@@ -15,8 +15,13 @@ use GuzzleHttp\Client;
 |
 */
 
-Route::get('/', function () {
+Route::get('/index', 'API\StarshipController@getAll')->name('index');
 
+
+
+
+
+    /*
     $client = new Client([
         // Base URI is used with relative requests
         'base_uri' => 'https://swapi.dev/api/',
@@ -39,11 +44,15 @@ Route::get('/', function () {
     //dd($response->getBody()->getContents('results'));
     //return json_decode($response->getBody()->getContents());
     //return view('welcome');
-});
+});*/
+
+
+
+
 
 Auth::routes();
-
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/index', 'API\StarshipController@getAll')->name('index');
 
 //Rutas para la swapi
 Route::get('post','SpaceShips@postRequest')->name('ship.post');

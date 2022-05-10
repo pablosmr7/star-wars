@@ -16,7 +16,8 @@ class StarshipController extends Controller
     public function getAll(){
       $data = Starship::get();
       $data2 = Pilot::get();
-      return response()->json($data, 200);
+      return view('welcome', $data);
+      //return response()->json($data, 200);
     }
 
     public function getPilotShip(){

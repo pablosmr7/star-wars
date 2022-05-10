@@ -1,0 +1,214 @@
+/*html, body {
+    background-color: #fff;
+    color: #636b6f;
+    font-family: 'Nunito', sans-serif;
+    font-weight: 200;
+    height: 100vh;
+    margin: 0;
+}*/
+
+.full-height {
+    height: 100vh;
+}
+
+.flex-center {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+}
+
+.position-ref {
+    position: relative;
+}
+
+.top-right {
+    position: absolute;
+    right: 10px;
+    top: 18px;
+}
+
+.content {
+    text-align: center;
+}
+
+.title {
+    font-size: 84px;
+}
+
+.links > a {
+    color: #636b6f;
+    padding: 0 25px;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: .1rem;
+    text-decoration: none;
+    text-transform: uppercase;
+}
+
+.m-b-md {
+    margin-bottom: 30px;
+}
+
+.control{
+    border: 10px solid rgb(255, 0, 0);
+}
+
+.data-card {
+    position:relative;
+    background-image: url("/../img/cardbgicut.PNG") ;
+
+    width: 450px;
+    height: 250px;
+
+    background-color: grey;
+    float:left;
+
+    margin:auto;
+    margin-right: 40px;
+    margin-left: 40px;
+    margin-top: 40px;
+    margin-bottom: 30px;
+    /*width: 40%;*/
+    border: 5px outset rgb(0, 77, 128);
+    border-radius: 25px;
+    padding: 10px;
+    text-align: center;
+}
+
+.data-title{
+    margin-right: 10px;
+    margin-left: 10px;
+    margin-top: 5px;
+    margin-bottom: 20px;
+
+    color: yellow;
+    background-color: grey;
+    border: 5px outset rgb(0, 77, 128);
+    border-radius: 25px;
+    /*border: 3px solid rgb(0, 77, 128);*/
+    
+}
+
+.data-content{
+    margin-right: 10px;
+    margin-left: 10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    /*border: 3px solid rgb(0, 77, 128);*/
+    float: left;
+    text-align: center;
+}
+
+
+.data-options{
+    /*border: 3px solid rgb(0, 77, 128);*/
+
+    margin-right: 10px;
+    margin-left: 10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+
+    float: right;
+    text-align: center;
+    position: absolute;
+    bottom: 0;
+
+    background-color: grey;
+    border: 5px outset rgb(0, 77, 128);
+    border-radius: 25px;
+}
+
+.banner{
+    width:100%;
+
+    border-radius: 25px;
+    border: 5px outset rgb(116, 122, 127);
+
+    padding-right: 10px;
+    padding-left: 10px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+
+    text-align:center;
+    background-image: url("/../img/build-small.PNG");
+
+}
+
+.fixed{
+    position:fixed; 
+    width: 100%;
+    transition: 0.2s linear;
+    top: 0px;
+}
+
+.nofixed{
+    position: static;
+    transition: 0.2s linear;
+    top: -50px
+}
+
+body {  
+    background-color: #000000;
+    color: rgb(244, 244, 252);
+    border: #ff0000 10px;
+}
+
+.bgi {
+  width:100%;
+  height:100%;
+  
+  background-image: url("/../img/bgi.jpg");
+  background-color: #cccccc;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position:fixed;
+
+  z-index: -5;
+}
+
+
+.nav-main{
+  width:100%;
+  height:148px;
+
+  background-image: url("/../img/newB.jpeg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+
+
+  margin-bottom: 10px;
+
+  z-index: 3;
+}
+
+.nav-data{
+  background-color: rgb(82, 80, 80);
+  opacity: 70%;
+
+  width:100%;
+  position:relative;
+
+  /*margin-top:10px;
+  margin-bottom: 10px;*/
+
+  text-align: center;
+
+}
+
+a:link, a:visited {
+  color:yellow;
+}
+
+img{
+  width:118px;
+  height:118px;
+  /*mix-blend-mode: multiply;*/
+}
+
+.icon{
+  width:45px;
+  height:45px;
+  float: right;
+}

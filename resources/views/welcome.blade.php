@@ -4,96 +4,91 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Laravel</title>
+        <title>SW Database</title>
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
-
         <!-- Styles -->
-        <style>
-            html, body {
-                background-color: #fff;
-                color: #636b6f;
-                font-family: 'Nunito', sans-serif;
-                font-weight: 200;
-                height: 100vh;
-                margin: 0;
-            }
+        <link rel="stylesheet" href="{{ asset('css/styles.css') }}">
+        <!-- Derivados de JS -->
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+        <script src="jquery-1.3.2.min.js" type="text/javascript"></script>   
 
-            .full-height {
-                height: 100vh;
-            }
-
-            .flex-center {
-                align-items: center;
-                display: flex;
-                justify-content: center;
-            }
-
-            .position-ref {
-                position: relative;
-            }
-
-            .top-right {
-                position: absolute;
-                right: 10px;
-                top: 18px;
-            }
-
-            .content {
-                text-align: center;
-            }
-
-            .title {
-                font-size: 84px;
-            }
-
-            .links > a {
-                color: #636b6f;
-                padding: 0 25px;
-                font-size: 13px;
-                font-weight: 600;
-                letter-spacing: .1rem;
-                text-decoration: none;
-                text-transform: uppercase;
-            }
-
-            .m-b-md {
-                margin-bottom: 30px;
-            }
-        </style>
     </head>
+
+
     <body>
-        <div class="flex-center position-ref full-height">
-            @if (Route::has('login'))
-                <div class="top-right links">
-                    @auth
-                        <a href="{{ url('/home') }}">Home</a>
-                    @else
-                        <a href="{{ route('login') }}">Login</a>
-
-                        @if (Route::has('register'))
-                            <a href="{{ route('register') }}">Register</a>
-                        @endif
-                    @endauth
-                </div>
-            @endif
-
-            <div class="content">
-                <div class="title m-b-md">
-                    Laravel
-                </div>
-
-                <div class="links">
-                    <a href="https://laravel.com/docs">Docs</a>
-                    <a href="https://laracasts.com">Laracasts</a>
-                    <a href="https://laravel-news.com">News</a>
-                    <a href="https://blog.laravel.com">Blog</a>
-                    <a href="https://nova.laravel.com">Nova</a>
-                    <a href="https://forge.laravel.com">Forge</a>
-                    <a href="https://github.com/laravel/laravel">GitHub</a>
-                </div>
-            </div>
+        <div class="bgi">
         </div>
+
+        <div class="nav-main" (scroll)="onscroll()"[ngClass]="navbarfixed?'fixed':'nofixed'">
+
+            <h1 style="text-align:center;">
+                <img src="{{ asset('img/1.png') }}" alt="image">
+                    <a href="/starship/index" class="nav-data" > Star Wars Database </a>
+                <img src="{{ asset('img/1.png') }}" alt="image">
+            </h1>
+
+            <div class="nav-data">	
+                <h5>
+                    <a href="/starship/index" >Naves Espaciales</a> / <a href="/starship/index">Personajes</a>
+                </h5>
+            </div>
+            
+        </div>
+
+
+
+        <div class="container" style="padding:20px;">
+
+            <!--<hr>-->
+
+        <main>
+            <router-outlet></router-outlet>
+        </main>
+        </div>
+
+
+        <section class="banner">
+  
+            <div class="">
+            <h4>Gran Astillero de Coruscant</h4>
+            <a routerLink="/starship/create" class="btn btn-success">Añadir Nave</a>
+            </div>
+
+            <br>
+
+
+
+        <div class="data-card" *ngFor="let starship of starships">
+
+            <div class="data-title">
+            <img src="../img/1.png" alt="image" class="icon">
+            <b>Nombre: </b> <br>
+            </div>
+
+            <div class="data-content">
+            <b>Identificacion: </b> <br>
+            </div>
+
+            <div class="data-content">
+            <b>Coste: </b>
+            </div>
+
+            <div class="data-content">
+            <b>Pilotos: </b>  <br>
+            </div>
+
+            <br><br>
+            
+            <div class="data-options">
+            <a href="#" [routerLink]="['/starship/', 'edit', starship.id  ]" class="btn btn-primary">Edit</a>
+            <button type="button" (click)="deleteStarship(starship.id)" class="btn btn-danger">Delete</button>
+            </div>
+
+        </div>
+
+        </section>
+
     </body>
 </html>
