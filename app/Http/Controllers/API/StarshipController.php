@@ -12,12 +12,18 @@ Use Log;
 class StarshipController extends Controller
 {
     
-
+    //ESTE METODO LLEVA A LA PAGINA INICIAL
     public function getAll(){
       $data = Starship::get();
       $data2 = Pilot::get();
-      return view('welcome', $data);
+      return view('welcome')->with(['data'=>$data, 'data2'=>$data2]); 
       //return response()->json($data, 200);
+    }
+
+////////////ESTOS METODOS DEVUELVEN JSONS DE NUESTRA BD
+    public function getShip(){
+      $data = Starship::get();
+      return response()->json($data, 200);
     }
 
     public function getPilotShip(){
@@ -30,12 +36,14 @@ class StarshipController extends Controller
       return response()->json($data, 200);
     }
 
-
+/////////////////////////////////////////////////////////////
+//ESTOS METODOS CREAN TARJETA Y PILOTO ASOCIADO A NAVE///////
+/////////////////////////////////////////////////////////////
 
     public function create(Request $request){
       $data['name'] = $request['name'];
       $data['credits'] = $request['credits'];
-      //$data['phone'] = $request['phone'];
+
       Starship::create($data);
       return response()->json([
           'message' => "Successfully created",
@@ -43,6 +51,29 @@ class StarshipController extends Controller
       ], 200);
     }
 
+
+
+    public function createPilotShip(Request $request){
+      $data['id_pilot'] = $request['id_pilot'];
+      $data['id_starship'] = $request['id_starship'];
+
+      PilotStarship::create($data);
+      return response()->json([
+          'message' => "Successfully created",
+          'success' => true
+      ], 200);
+    }
+
+/////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////
+
+
+
+
+/////////////////////////////////////////////////////////////
+//ESTOS METODOS BORRAN TARJETA Y PILOTO ASOCIADO A NAVE//////
+/////////////////////////////////////////////////////////////
 
     public function delete($id){
       $res = Starship::find($id)->delete();
@@ -52,6 +83,17 @@ class StarshipController extends Controller
       ], 200);
     }
 
+    public function deletePilotShip($id){
+      $res = PilotStarship::find($id)->delete();
+      return response()->json([
+          'message' => "Successfully deleted",
+          'success' => true
+      ], 200);
+    }
+
+/////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////
 
     public function get($id){
       $data = Starship::find($id);

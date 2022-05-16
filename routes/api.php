@@ -20,9 +20,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 //Rutas llamada API
 Route::prefix('starship')->group(function () {
-    Route::get('/',[ StarshipController::class, 'getAll']);
-    //Route::get('/',[ StarshipController::class, 'getPilotShip']);
-    //Route::get('/',[ StarshipController::class, 'getPilot']);
+    Route::get('/',[ StarshipController::class, 'getShip']);
     Route::post('/',[ StarshipController::class, 'create']);
     Route::delete('/{id}',[ StarshipController::class, 'delete']);
     Route::get('/{id}',[ StarshipController::class, 'get']);
@@ -30,18 +28,13 @@ Route::prefix('starship')->group(function () {
 });
 
 Route::prefix('pilot')->group(function () {
-    //Route::get('/',[ StarshipController::class, 'getPilotShip']);
     Route::get('/',[ StarshipController::class, 'getPilot']);
     Route::post('/',[ StarshipController::class, 'create']);
     Route::delete('/{id}',[ StarshipController::class, 'delete']);
-    Route::get('/{id}',[ StarshipController::class, 'get']);
-    Route::put('/{id}',[ StarshipController::class, 'update']);
 });
 
 Route::prefix('pilotShip')->group(function () {
     Route::get('/',[ StarshipController::class, 'getPilotShip']);
-    Route::post('/',[ StarshipController::class, 'create']);
-    Route::delete('/{id}',[ StarshipController::class, 'delete']);
-    Route::get('/{id}',[ StarshipController::class, 'get']);
-    Route::put('/{id}',[ StarshipController::class, 'update']);
+    Route::post('/',[ StarshipController::class, 'createPilotShip']);
+    Route::delete('/{id}',[ StarshipController::class, 'deletePilotShip']);
 });

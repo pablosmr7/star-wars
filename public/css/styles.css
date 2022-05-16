@@ -7,63 +7,27 @@
     margin: 0;
 }*/
 
-.full-height {
-    height: 100vh;
-}
-
-.flex-center {
-    align-items: center;
-    display: flex;
-    justify-content: center;
-}
-
-.position-ref {
-    position: relative;
-}
-
-.top-right {
-    position: absolute;
-    right: 10px;
-    top: 18px;
-}
-
-.content {
-    text-align: center;
-}
-
-.title {
-    font-size: 84px;
-}
-
-.links > a {
-    color: #636b6f;
-    padding: 0 25px;
-    font-size: 13px;
-    font-weight: 600;
-    letter-spacing: .1rem;
-    text-decoration: none;
-    text-transform: uppercase;
-}
-
-.m-b-md {
-    margin-bottom: 30px;
-}
-
 .control{
     border: 10px solid rgb(255, 0, 0);
 }
 
+.container{
+    width: 80%;
+    margin:0 auto;
+
+
+}
+
 .data-card {
-    position:relative;
     background-image: url("/../img/cardbgicut.PNG") ;
+    position:relative;
+    float:left;
 
     width: 450px;
     height: 250px;
 
     background-color: grey;
-    float:left;
 
-    margin:auto;
     margin-right: 40px;
     margin-left: 40px;
     margin-top: 40px;
@@ -76,6 +40,8 @@
 }
 
 .data-title{
+    position:relative;
+
     margin-right: 10px;
     margin-left: 10px;
     margin-top: 5px;
@@ -90,6 +56,10 @@
 }
 
 .data-content{
+    position:relative;
+
+    padding-top: 3px;
+
     margin-right: 10px;
     margin-left: 10px;
     margin-top: 10px;
@@ -97,12 +67,18 @@
     /*border: 3px solid rgb(0, 77, 128);*/
     float: left;
     text-align: center;
+
+    background-color: grey;
+    border: 3px outset rgb(0, 77, 128);
+    border-radius: 25px;
+
 }
 
 
 .data-options{
     /*border: 3px solid rgb(0, 77, 128);*/
-
+    position:absolute;
+    
     margin-right: 10px;
     margin-left: 10px;
     margin-top: 10px;
@@ -119,7 +95,9 @@
 }
 
 .banner{
-    width:100%;
+    width:75%;
+    margin:0 auto;
+    margin-top: 40px;
 
     border-radius: 25px;
     border: 5px outset rgb(116, 122, 127);
@@ -131,6 +109,8 @@
 
     text-align:center;
     background-image: url("/../img/build-small.PNG");
+    background-repeat: no-repeat;
+    background-size: cover;
 
 }
 
@@ -167,7 +147,6 @@ body {
   z-index: -5;
 }
 
-
 .nav-main{
   width:100%;
   height:148px;
@@ -199,6 +178,10 @@ body {
 
 a:link, a:visited {
   color:yellow;
+}
+
+td{
+  color:whitesmoke;
 }
 
 img{
