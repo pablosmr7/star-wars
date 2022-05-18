@@ -26,6 +26,27 @@ class StarshipController extends Controller
       return response()->json($data, 200);
     }
 
+
+
+    public function getShipPilots($id){
+      error_log("Hello");
+      $data = PilotStarship::where(["id_starship"=>$id])->get();
+      error_log(count($data));
+      foreach( $data as $pilotShip){
+        error_log($pilotShip->id_pilot);
+        $pilotShip->pilot=$pilotShip->getPilotbyId($pilotShip->id_pilot);
+
+      }
+      return response()->json($data, 200);
+    }
+
+
+
+
+
+
+
+
     public function getPilotShip(){
       $data = PilotStarship::get();
       return response()->json($data, 200);

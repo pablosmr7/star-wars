@@ -21,6 +21,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 //Rutas llamada API
 Route::prefix('starship')->group(function () {
     Route::get('/',[ StarshipController::class, 'getShip']);
+    Route::get('/{id}/pilots',[ StarshipController::class, 'getShipPilots']);
     Route::post('/',[ StarshipController::class, 'create']);
     Route::delete('/{id}',[ StarshipController::class, 'delete']);
     Route::get('/{id}',[ StarshipController::class, 'get']);

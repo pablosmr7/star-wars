@@ -15,8 +15,8 @@ class PilotStarship extends Migration
     {
         Schema::create('pilot_starships', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('id_pilot')->nullable();
-            $table->string('id_starship')->nullable();
+            $table->string('id_pilot');
+            $table->string('id_starship');
             $table->timestamps();
         });
     }
