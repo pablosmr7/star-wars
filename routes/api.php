@@ -18,7 +18,9 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-//Rutas llamada API
+
+// ESTOS METODOS CONTACTAN CON LOS METODOS DEL API CONTROLER STARSHIP
+// METODOS PARA MANEJO DE NAVES
 Route::prefix('starship')->group(function () {
     Route::get('/',[ StarshipController::class, 'getShip']);
     Route::get('/{id}/pilots',[ StarshipController::class, 'getShipPilots']);
@@ -28,12 +30,16 @@ Route::prefix('starship')->group(function () {
     Route::put('/{id}',[ StarshipController::class, 'update']);
 });
 
+
+//METODOS PARA MANEJO DE PILOTOS
 Route::prefix('pilot')->group(function () {
     Route::get('/',[ StarshipController::class, 'getPilot']);
     Route::post('/',[ StarshipController::class, 'create']);
     Route::delete('/{id}',[ StarshipController::class, 'delete']);
 });
 
+
+//METODOS PARA MANEJO DE PILOTOS ASOCIADOS A NAVES
 Route::prefix('pilotShip')->group(function () {
     Route::get('/',[ StarshipController::class, 'getPilotShip']);
     Route::post('/',[ StarshipController::class, 'createPilotShip']);

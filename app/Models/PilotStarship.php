@@ -10,7 +10,6 @@ class PilotStarship extends Model
     protected $fillable=['id_pilot','id_starship'];
 
     public function getPilotbyId($idPilot){
-        error_log("hay");
         return Pilot::find($idPilot);
       } 
   

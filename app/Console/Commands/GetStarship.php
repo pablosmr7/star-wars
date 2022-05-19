@@ -37,7 +37,7 @@ class GetStarship extends Command
      */
     public function handle()
     {
-
+        //RESETEO LA BASE DE DATOS CADA VEZ QUE SE LLAMA AL COMANDO
         Artisan::call('migrate:fresh');
 
         //PRIMERO LLAMO A LA API BASE CON GUZZLE PARA CAPTAR TODOS LOS DATOS
@@ -61,30 +61,6 @@ class GetStarship extends Command
                 $pilot->delete();
 
                 $pilot->name = $data2->results[$i]->name;
-                //$pilot->url = $data2->results[$i]->url; //Dato redundante
-                          
-
-        /*
-        //CAPTO LA RELACION DE PILOTOS Y NAVES DE N:N
-                if($data2->results[$i]->starships == !null){
-                    for($z=0; $z< sizeof($data2->results[$i]->starships); $z++){
-                        $pilotShip = new PilotStarship();
-                        
-                        //CASTEO LOS DATOS PARA METERLOS EN LA TABLA pilot_statships
-                        $pilotId = $data2->results[$i]->url;
-                        $pilotId2 = substr($pilotId, 29, -1);
-
-                        $shipId = $data2->results[$i]->starships[$z];
-                        $shipId2 = substr($shipId, 32, -1);
-
-
-                        //ASIGNO Y GUARDO
-                        $pilotShip->id_pilot = $pilotId2;
-                        $pilotShip->id_starship = $shipId2;
-                    
-                        $pilotShip->save();
-                    }
-                }*/
                                                                    
                 $pilot->save();
             }
@@ -122,10 +98,12 @@ class GetStarship extends Command
                         $pilotaux=$data->results[$i]->pilots;
 
 
-                        for($z=0; $z<sizeof($pilotaux); $z++){ //ESTE FOR ES PARA CADA
+                        for($z=0; $z<sizeof($pilotaux); $z++){ //ESTE FOR ES PARA CADA PILOTO QUE TENGA LA NAVE
                             $pilotShip = new PilotStarship();
                             
                             //CASTEO LOS DATOS PARA METERLOS EN LA TABLA pilot_statships
+                            //LOS ARRAYS EMPIEZAN EN INDICE 0, LAS BD EN INDICE 1, COSAS QUE PASAN
+
                             if($page==1){
                                 $shipId = $i+1;
                             }else if($page==2){
@@ -135,7 +113,9 @@ class GetStarship extends Command
                             }else if($page==4){
                                 $shipId = $i+31;
                             }
-
+                            
+                            //RECORTO LOS DOS ULTIMOS CARACTERES DE LA URL DE PILOTOS PARA SACAR SU ID
+                            //REFACTORIZADO, YA NO LO USO, PERO NO LE HACE DAÑO A NADIE
                             $pilotId = $pilotaux[$z];
                             $pilotId2 = substr($pilotId, 29, -1);
     
@@ -154,6 +134,7 @@ class GetStarship extends Command
                         }
                     }
 
+                    //GUARDO LA NAVE SOLO CUANDO HE HECHO LA RELACION CON LOS PILOTOSO
                     $starship->save();
                     
                 }
@@ -162,5 +143,8 @@ class GetStarship extends Command
             }
 
 
-        }
+    }
+
+
+
 }
