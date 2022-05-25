@@ -2,6 +2,7 @@
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\API\StarshipController;
+use App\Http\Controllers\API\PilotController;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,6 +21,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 
 // ESTOS METODOS CONTACTAN CON LOS METODOS DEL API CONTROLER STARSHIP
+
 // METODOS PARA MANEJO DE NAVES
 Route::prefix('starship')->group(function () {
     Route::get('/',[ StarshipController::class, 'getShip']);
@@ -33,9 +35,11 @@ Route::prefix('starship')->group(function () {
 
 //METODOS PARA MANEJO DE PILOTOS
 Route::prefix('pilot')->group(function () {
-    Route::get('/',[ StarshipController::class, 'getPilot']);
-    Route::post('/',[ StarshipController::class, 'create']);
-    Route::delete('/{id}',[ StarshipController::class, 'delete']);
+    Route::get('/',[ PilotController::class, 'getPilot']);
+    Route::post('/',[ PilotController::class, 'create']);
+    Route::delete('/{id}',[ PilotController::class, 'delete']);
+    Route::get('/{id}',[ PilotController::class, 'get']);
+    Route::put('/{id}',[ PilotController::class, 'update']);
 });
 
 

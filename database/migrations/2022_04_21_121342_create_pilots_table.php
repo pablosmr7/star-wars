@@ -16,6 +16,10 @@ class CreatePilotsTable extends Migration
         Schema::create('pilots', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
+            $table->string('birth_year')->nullable();
+            $table->string('gender')->nullable();
+            $table->string('species')->nullable();
+
             //$table->string('url');
             $table->timestamps();
         });

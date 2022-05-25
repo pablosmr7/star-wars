@@ -7,7 +7,12 @@ use Illuminate\Database\Eloquent\Model;
 class Pilot extends Model
 {
 
-    protected $fillable=['name'];
+    protected $fillable=[
+        'name',
+        'birth_year',
+        'gender',
+        'species'
+    ];
 
 //------------------------------------------------------------------------------------------------
     //pilotos no asignados
@@ -17,13 +22,5 @@ class Pilot extends Model
         $unPilots=Pilot::whereNotIn('id',$misPilotos)->get();
         return $unPilots;
     }
-
-
-
-
-
-
-
-
 
 }

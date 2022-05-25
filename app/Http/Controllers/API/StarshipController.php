@@ -58,13 +58,6 @@ class StarshipController extends Controller
       return response()->json($data, 200);
     }
 
-
-    //MANDA UN JSON DE TODOS LOS PILOTOS
-    public function getPilot(){
-      $data = Pilot::get();
-      return response()->json($data, 200);
-    }
-
     //MANDA UN JSON DE UNA UNICA NAVE DEL ID PROPORCIONADO
     public function get($id){
       $data = Starship::find($id);

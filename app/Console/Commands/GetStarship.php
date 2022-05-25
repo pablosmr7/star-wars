@@ -61,7 +61,18 @@ class GetStarship extends Command
                 $pilot->delete();
 
                 $pilot->name = $data2->results[$i]->name;
-                                                                   
+                $pilot->birth_year = $data2->results[$i]->birth_year;
+                $pilot->gender = $data2->results[$i]->gender;
+
+
+                $speciesaux=$data2->results[$i]->species;
+                for($m=0; $m<sizeof($speciesaux); $m++){
+                    $speciesraw = $speciesaux[$m];
+                    $speciesref = substr($speciesraw, 30, -1);
+
+                    $pilot->species = $speciesref;
+                };
+                                                                  
                 $pilot->save();
             }
         }
