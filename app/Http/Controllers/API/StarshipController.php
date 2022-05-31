@@ -11,21 +11,6 @@ Use Log;
 
 class StarshipController extends Controller
 {
-
-  // ESTE METODO LLEVA A LA PAGINA INICIAL
-  // ESTE METODO HA SIDO ABANDONADO, SINCERAMENTE, NO SE HACER ANGULARJS EN UN
-  //  PROYETO LARAVEL
-
-
-    /*
-    public function getAll(){
-      $data = Starship::get();
-      $data2 = Pilot::get();
-      return view('welcome')->with(['data'=>$data, 'data2'=>$data2]); 
-      //return response()->json($data, 200);
-    }*/
-
-
 /////////////////////////////////////////////////////////////////////////////////////////
 ////////////////////ESTOS METODOS DEVUELVEN JSONS DE NUESTRA BD//////////////////////////
 /////////////////////////////////////////////////////////////////////////////////////////

@@ -16,9 +16,10 @@ class CreateStarshipsTable extends Migration
         Schema::create('starships', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
+            $table->string('model')->nullable();
+            $table->string('manufacturer')->nullable();
             $table->string('credits')->nullable();
             $table->json('pilot')->nullable();
-            $table->string('img')->nullable();
             $table->timestamps();
         });
     }

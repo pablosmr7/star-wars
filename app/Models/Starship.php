@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Starship extends Model
 {
-    protected $fillable=['name','credits', 'img'];
+    protected $fillable=['name','credits', 'model', 'manufacturer', 'img'];
     protected $casts =[
         'pilot' => 'array'
     ];
