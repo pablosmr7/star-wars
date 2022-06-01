@@ -25,13 +25,10 @@ class StarshipController extends Controller
 
     //MANDA UN JSON DE LOS PILOTOS ASOCIADOS AL ID DE UNA NAVE
     public function getShipPilots($id){
-      //error_log("Hello");
-      $data = PilotStarship::where(["id_starship"=>$id])->get();
-      //error_log(count($data));
-      foreach( $data as $pilotShip){
-        //error_log($pilotShip->id_pilot);
-        $pilotShip->pilot=$pilotShip->getPilotbyId($pilotShip->id_pilot);
 
+      $data = PilotStarship::where(["id_starship"=>$id])->get();
+      foreach( $data as $pilotShip){
+        $pilotShip->pilot=$pilotShip->getPilotbyId($pilotShip->id_pilot);
       }
       return response()->json($data, 200);
     }
@@ -48,6 +45,20 @@ class StarshipController extends Controller
       $data = Starship::find($id);
       return response()->json($data, 200);
     }
+
+    //BUSCA LOS CAMPOS DE LA NAVE
+
+    public function searchShip(Request $request){
+      $query = Starship::query();
+      $data = $request->input('search_ship');
+      if ($data){
+        $query->whereRaw("title LIKE '%" .$data. "%' ");
+      }
+
+      return response()->json($query, 200);
+    }
+
+
 
 /////////////////////////////////////////////////////////////
 ////ESTOS METODOS GUARDAN NAVES Y RELACIONES PILOTOS-NAVE////

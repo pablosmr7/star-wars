@@ -30,6 +30,8 @@ Route::prefix('starship')->group(function () {
     Route::delete('/{id}',[ StarshipController::class, 'delete']);
     Route::get('/{id}',[ StarshipController::class, 'get']);
     Route::put('/{id}',[ StarshipController::class, 'update']);
+    
+    Route::get('/{search_ship}',[ StarshipController::class, 'searchShip']);
 });
 
 
