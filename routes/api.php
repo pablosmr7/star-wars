@@ -3,6 +3,9 @@
 use Illuminate\Http\Request;
 use App\Http\Controllers\API\StarshipController;
 use App\Http\Controllers\API\PilotController;
+use App\Http\Controllers\API\AuthController;
+
+
 
 /*
 |--------------------------------------------------------------------------
@@ -14,10 +17,6 @@ use App\Http\Controllers\API\PilotController;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
-
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
-});
 
 
 // ESTOS METODOS CONTACTAN CON LOS METODOS DEL API CONTROLER STARSHIP
@@ -50,4 +49,9 @@ Route::prefix('pilotShip')->group(function () {
     Route::get('/',[ StarshipController::class, 'getPilotShip']);
     Route::post('/',[ StarshipController::class, 'createPilotShip']);
     Route::delete('/{id}',[ StarshipController::class, 'deletePilotShip']);
+});
+
+
+Route::prefix('auth')->group(function () {
+    Route::post('/login',[ AuthController::class, 'login']);
 });

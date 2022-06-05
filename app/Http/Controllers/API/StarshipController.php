@@ -69,6 +69,8 @@ class StarshipController extends Controller
     public function create(Request $request){
       $data['name'] = $request['name'];
       $data['credits'] = $request['credits'];
+      $data['model'] = $request['model'];
+      $data['manufacturer'] = $request['manufacturer'];
 
       Starship::create($data);
       return response()->json([
@@ -124,6 +126,8 @@ class StarshipController extends Controller
     public function update(Request $request,$id){
       $data['name'] = $request['name'];
       $data['credits'] = $request['credits'];
+      $data['model'] = $request['model'];
+      $data['manufacturer'] = $request['manufacturer'];
 
       Starship::find($id)->update($data);
       return response()->json([
