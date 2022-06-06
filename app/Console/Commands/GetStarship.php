@@ -5,6 +5,7 @@ namespace App\Console\Commands;
 use App\Models\Pilot;
 use App\Models\Starship;
 use App\Models\PilotStarship;
+use App\User;
 
 use GuzzleHttp\Client;
 use Illuminate\Console\Command;
@@ -48,7 +49,14 @@ class GetStarship extends Command
             'timeout'  => 0.0,
         ]);
 
-    
+        $user=new User();
+        $user->delete();
+        $user->first_name="Admin";
+        $user->last_name="Administrez";
+        $user->email="admin@admin.com";
+        $user->password="admin";
+
+        $user->save();
         
         //CAPTACION DE PERSONAS CON GUZZLE
         for($x=1; $x<=9; $x++){         //HAY 9 PAGINAS DE PERSONAS  
